@@ -1,0 +1,28 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: team-pod2
+  labels:
+    apps: myteam
+spec:
+  containers:
+  - name: team-container
+    image: public.ecr.aws/c5s4y9b3/team:latest
+    ports:
+    - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: team-service
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    apps: myteam
+#   type: ClusterIP
+#   #  type: NodePort
+  type: LoadBalancer
