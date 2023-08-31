@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
   - name: team-container
-    image: 348286604051.dkr.ecr.ap-northeast-2.amazonaws.com/test-jm:min20230830
+    image: 348286604051.dkr.ecr.ap-northeast-2.amazonaws.com/test-jm:min20230831
     ports:
     - containerPort: 80
 
