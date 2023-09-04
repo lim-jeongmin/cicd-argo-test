@@ -1,0 +1,28 @@
+---
+#apiVersion: v1
+#kind: Pod
+#metadata:
+#  name: team-pod2
+#  labels:
+#    apps: myteam
+#spec:
+#  containers:
+#  - name: team-container
+#    image: 348286604051.dkr.ecr.ap-northeast-2.amazonaws.com/test-jm:min20230831
+#    ports:
+#    - containerPort: 80
+
+---
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: team-service
+#spec:
+#  ports:
+#  - port: 80
+#    targetPort: 80
+#  selector:
+#    apps: myteam
+##   type: ClusterIP
+##     type: NodePort
+#  type: LoadBalancer

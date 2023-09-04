@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: team-service
+spec:
+  selector:
+    app: myteam
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30010
+  type: NodePort
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: team-project
+  labels:
+    app: myteam
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myteam
+  template:
+    metadata:
+      labels:
+        app: myteam
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - myteam
+              topologyKey: "kubernetes.io/hostname"
+      containers:
+      - name: team-container
+        image: public.ecr.aws/c5s4y9b3/team:latest
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 300m
