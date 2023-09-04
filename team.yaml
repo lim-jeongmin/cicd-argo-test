@@ -41,7 +41,7 @@ spec:
               topologyKey: "kubernetes.io/hostname"
       containers:
       - name: team-container
-        image: public.ecr.aws/c5s4y9b3/team:latest
+        image: 348286604051.dkr.ecr.ap-northeast-2.amazonaws.com/test-jm:min20230904
         ports:
         - containerPort: 80
         resources:
